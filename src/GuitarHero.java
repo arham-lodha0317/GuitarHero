@@ -14,17 +14,18 @@ public class GuitarHero {
             // check if the user has typed a key; if so, process it
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
-                guitarStrings[keyboard.indexOf(key)].pluck();
+
+                if(keyboard.indexOf(key) != -1)guitarStrings[keyboard.indexOf(key)].pluck();
             }
             // compute the superposition of samples
 
-            double sample = Arrays.stream(guitarStrings).mapToDouble(x -> x.sample()).sum();
+            double sample = Arrays.stream(guitarStrings).mapToDouble(GuitarString::sample).sum();
 
             // play the sample on standard audio
             StdAudio.play(sample);
 
             // advance the simulation of each guitar string by one step
-
+            Arrays.stream(guitarStrings).forEach(GuitarString::tic);
         }
     }
 }
