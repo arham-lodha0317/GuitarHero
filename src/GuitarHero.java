@@ -15,7 +15,7 @@ public class GuitarHero {
             if (StdDraw.hasNextKeyTyped()) {
                 char key = StdDraw.nextKeyTyped();
 
-                if(keyboard.indexOf(key) != -1)guitarStrings[keyboard.indexOf(key)].pluck();
+                if(keyboard.indexOf(key) != -1)guitarStrings[keyboard.indexOf(key)].pluckGaussian();
             }
             // compute the superposition of samples
 
